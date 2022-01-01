@@ -14,6 +14,7 @@ extension Int {
         case second
     }
     
+    // "00:00:00"
     func hourMinuteSecond() -> String {
         
         var restSeconds = self
@@ -48,6 +49,26 @@ extension Int {
         }
         return result
         
+    }
+    
+    // "00시간 00분"
+    func koreanUnitFromMinutes() -> String {
+        
+        var restMinutes = self
+        let hourUnitFromMinutes = 60
+        let hours = restMinutes / hourUnitFromMinutes
+        restMinutes = restMinutes % hourUnitFromMinutes
+        
+        var hoursDisplay = ""
+        if hours != 0 {
+            hoursDisplay = "\(hours)시간 "
+        }
+        
+        var minutesDisplay = ""
+        if restMinutes != 0 {
+            minutesDisplay = "\(restMinutes)분"
+        }
+        return hoursDisplay + minutesDisplay
     }
     
 }

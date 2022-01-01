@@ -11,7 +11,6 @@ class TimerListController: UIViewController {
 
     @IBOutlet weak var timerList: UICollectionView!
     
-    var testCount = 0
     var model: TimerListModel? = nil {
         didSet {
             self.timerList.reloadData()
@@ -29,7 +28,7 @@ class TimerListController: UIViewController {
         )
         
         self.model = UserDefaultManager.getValue(with: .timerInfo)
-        
+
         self.timerList.setCell(cellName: TimerPlayerCell.self)
         self.timerList.delegate = self
         self.timerList.dataSource = self
@@ -38,20 +37,9 @@ class TimerListController: UIViewController {
     
     @objc
     func addNewTimer() {
-        let test = TimerModel(name: "\(testCount)", times: 0)
-
-        if let _ = self.model {
-            var already = self.model?.records
-            already?.append(test)
-            self.model?.records = already ?? []
-        } else {
-            let new = TimerListModel(records: [test])
-            self.model = new
-        }
-        
-        
-        UserDefaultManager.setValue(with: self.model!, key: .timerInfo)
-        self.testCount += 1
+        let vc = AddTimerViewController(nibName: "AddTimerViewController", bundle: nil)
+        vc.delegate = self
+        self.present(vc, animated: true, completion: nil)
         
     }
     
@@ -77,5 +65,12 @@ extension TimerListController: UICollectionViewDelegate, UICollectionViewDataSou
 extension TimerListController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 123)
+    }
+}
+
+
+extension TimerListController: AddTimerProtocol {
+    func addTimerDidFinish() {
+        self.model = UserDefaultManager.getValue(with: .timerInfo)
     }
 }

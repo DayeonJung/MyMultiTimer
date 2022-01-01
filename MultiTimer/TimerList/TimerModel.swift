@@ -13,7 +13,7 @@ struct TimerListModel: Codable {
 
 struct TimerModel: Codable {
     var name: String
-    var times: Int
-    
+    var times: Int = 0
+    var secondsToFill: Int
 }
 
