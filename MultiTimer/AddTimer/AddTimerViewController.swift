@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddTimerProtocol: AnyObject {
-    func addTimerDidFinish()
+    func addTimer(didFinishWith data: TimerListModel)
 }
 
 class AddTimerViewController: UIViewController {
@@ -77,7 +77,7 @@ class AddTimerViewController: UIViewController {
             self.savedTimers.records = savedRecords
             UserDefaultManager.setValue(with: self.savedTimers, key: .timerInfo)
             self.dismiss(animated: true, completion: {
-                self.delegate?.addTimerDidFinish()
+                self.delegate?.addTimer(didFinishWith: self.savedTimers)
             })
         }
     }

@@ -70,7 +70,7 @@ extension TimerListController: UICollectionViewDelegateFlowLayout {
 
 
 extension TimerListController: AddTimerProtocol {
-    func addTimerDidFinish() {
-        self.model = UserDefaultManager.getValue(with: .timerInfo)
+    func addTimer(didFinishWith data: TimerListModel) {
+        self.model = data
     }
 }

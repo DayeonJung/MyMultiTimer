@@ -22,6 +22,24 @@ class TimerPlayerCell: UICollectionViewCell {
             self.timeDidChange()
         }
     }
+    var startTime: Date? = nil {
+        didSet {
+            self.saveStartTime()
+            let message = self.startTime?.dateString() == nil ? nil : (self.startTime!.dateString() + "에 시작했어요.")
+            self.startTimeLabel.text = message
+        }
+    }
+    
+    var saved: TimerListModel? {
+        get {
+            UserDefaultManager.getValue(with: .timerInfo)
+        }
+        set {
+            UserDefaultManager.setValue(with: newValue, key: .timerInfo)
+        }
+        
+    }
+    
     var currentState: TimerState = .pause
     var model: TimerModel?
     
@@ -52,6 +70,7 @@ class TimerPlayerCell: UICollectionViewCell {
         
         self.resetButton.onClick = {
             self.currentTime = 0
+            self.startTime = self.currentState == .play ? Date() : nil
         }
     }
 
@@ -68,6 +87,10 @@ class TimerPlayerCell: UICollectionViewCell {
                 userInfo: nil,
                 repeats: true
             )
+            
+            if self.startTime == nil {
+                self.startTime = Date()
+            }
         }
         
         self.startPauseButton.setTitle(self.currentState.rawValue, for: .normal)
@@ -81,21 +104,31 @@ class TimerPlayerCell: UICollectionViewCell {
     
     func timeDidChange() {
         self.timeLabel.text = self.currentTime.hourMinuteSecond()
+        self.saveCurrentTime()
         
-        if let timerModel = self.model {
-            var saved: TimerListModel? = UserDefaultManager.getValue(with: .timerInfo)
-            if let index = saved?.records.firstIndex(where: {$0.name == timerModel.name }) {
-                saved?.records[index].times = self.currentTime
-                UserDefaultManager.setValue(with: saved, key: .timerInfo)
-            }
-
-        }
-        
+    }
+    
+    private func saveStartTime() {
+        guard let index = self.findIndexOfRecords() else { return }
+        self.saved?.records[index].startTime = self.startTime
+    }
+    
+    private func saveCurrentTime() {
+        guard let index = self.findIndexOfRecords() else { return }
+        self.saved?.records[index].times = self.currentTime
+    }
+    
+    private func findIndexOfRecords() -> Int? {
+        guard let timerModel = self.model else { return nil }
+        return self.saved?.records.firstIndex(where: {$0.name == timerModel.name })
     }
     
     func setUI(with model: TimerModel) {
         self.model = model
         self.nameLabel.text = model.name
         self.currentTime = model.times
+        self.startTime = model.startTime
     }
+    
+
 }

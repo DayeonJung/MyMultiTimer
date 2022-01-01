@@ -15,5 +15,6 @@ struct TimerModel: Codable {
     var name: String
     var times: Int = 0
     var secondsToFill: Int
+    var startTime: Date?
 }
 
