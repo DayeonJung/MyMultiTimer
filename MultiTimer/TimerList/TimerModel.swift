@@ -7,8 +7,13 @@
 
 import Foundation
 
-struct TimerModel {
+struct TimerListModel: Codable {
+    var records: [TimerModel]
+}
+
+struct TimerModel: Codable {
     var name: String
     var times: Int
     
 }
+

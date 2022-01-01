@@ -20,6 +20,7 @@
 		B476759B2780587A002FD515 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476759A2780587A002FD515 /* Date.swift */; };
 		B476759D278058E7002FD515 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476759C278058E7002FD515 /* Int.swift */; };
 		B476759F27805D9D002FD515 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476759E27805D9D002FD515 /* TimerModel.swift */; };
+		B47675A1278061B5002FD515 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47675A0278061B5002FD515 /* UserDefaultManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		B476759A2780587A002FD515 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B476759C278058E7002FD515 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		B476759E27805D9D002FD515 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		B47675A0278061B5002FD515 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		B476757A27803FEA002FD515 /* MultiTimer */ = {
 			isa = PBXGroup;
 			children = (
+				B47675A0278061B5002FD515 /* UserDefaultManager.swift */,
 				B476759727804FFC002FD515 /* Custom */,
 				B4767593278042CB002FD515 /* Extension */,
 				B476757B27803FEA002FD515 /* AppDelegate.swift */,
@@ -187,6 +190,7 @@
 				B476758027803FEA002FD515 /* TimerListController.swift in Sources */,
 				B476757C27803FEA002FD515 /* AppDelegate.swift in Sources */,
 				B476759B2780587A002FD515 /* Date.swift in Sources */,
+				B47675A1278061B5002FD515 /* UserDefaultManager.swift in Sources */,
 				B4767591278041F4002FD515 /* TimerPlayerCell.swift in Sources */,
 				B4767595278042E8002FD515 /* List.swift in Sources */,
 				B476759927805007002FD515 /* TitleButton.swift in Sources */,

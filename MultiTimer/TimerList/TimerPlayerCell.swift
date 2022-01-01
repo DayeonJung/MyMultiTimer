@@ -23,6 +23,7 @@ class TimerPlayerCell: UICollectionViewCell {
         }
     }
     var currentState: TimerState = .pause
+    var model: TimerModel?
     
     enum TimerState: String {
         case play = "시작"
@@ -80,6 +81,21 @@ class TimerPlayerCell: UICollectionViewCell {
     
     func timeDidChange() {
         self.timeLabel.text = self.currentTime.hourMinuteSecond()
+        
+        if let timerModel = self.model {
+            var saved: TimerListModel? = UserDefaultManager.getValue(with: .timerInfo)
+            if let index = saved?.records.firstIndex(where: {$0.name == timerModel.name }) {
+                saved?.records[index].times = self.currentTime
+                UserDefaultManager.setValue(with: saved, key: .timerInfo)
+            }
+
+        }
+        
     }
     
+    func setUI(with model: TimerModel) {
+        self.model = model
+        self.nameLabel.text = model.name
+        self.currentTime = model.times
+    }
 }
