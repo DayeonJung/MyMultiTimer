@@ -23,6 +23,7 @@
 		B47675A1278061B5002FD515 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47675A0278061B5002FD515 /* UserDefaultManager.swift */; };
 		B47675A5278061F4002FD515 /* AddTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47675A3278061F4002FD515 /* AddTimerViewController.swift */; };
 		B47675A6278061F4002FD515 /* AddTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B47675A4278061F4002FD515 /* AddTimerViewController.xib */; };
+		B47675B02780BD37002FD515 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47675AF2780BD37002FD515 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		B47675A0278061B5002FD515 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		B47675A3278061F4002FD515 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
 		B47675A4278061F4002FD515 /* AddTimerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimerViewController.xib; sourceTree = "<group>"; };
+		B47675AF2780BD37002FD515 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				B4767594278042E8002FD515 /* List.swift */,
 				B476759A2780587A002FD515 /* Date.swift */,
 				B476759C278058E7002FD515 /* Int.swift */,
+				B47675AF2780BD37002FD515 /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				B476759F27805D9D002FD515 /* TimerModel.swift in Sources */,
 				B476758027803FEA002FD515 /* TimerListController.swift in Sources */,
 				B476757C27803FEA002FD515 /* AppDelegate.swift in Sources */,
+				B47675B02780BD37002FD515 /* UIView.swift in Sources */,
 				B476759B2780587A002FD515 /* Date.swift in Sources */,
 				B47675A1278061B5002FD515 /* UserDefaultManager.swift in Sources */,
 				B4767591278041F4002FD515 /* TimerPlayerCell.swift in Sources */,

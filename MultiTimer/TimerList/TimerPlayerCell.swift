@@ -61,6 +61,10 @@ class TimerPlayerCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.layer.cornerRadius = 8
+        self.clipsToBounds = true
+        self.backgroundColor = .white
+        
         self.startTimeLabel.text = ""
         self.finishTimeLabel.text = ""
         

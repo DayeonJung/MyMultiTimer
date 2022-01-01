@@ -52,6 +52,7 @@ extension TimerListController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.loadCell(identifier: TimerPlayerCell.self, indexPath: indexPath)
+        cell.addShadowWithRoundedCorners()
         if let record = self.model?.records[indexPath.item] {
             cell.setUI(with: record)
         }
@@ -64,7 +65,7 @@ extension TimerListController: UICollectionViewDelegate, UICollectionViewDataSou
 
 extension TimerListController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 123)
+        return CGSize(width: UIScreen.main.bounds.width - 40, height: 123)
     }
 }
 

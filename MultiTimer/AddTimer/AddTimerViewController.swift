@@ -20,7 +20,13 @@ class AddTimerViewController: UIViewController {
     var savedTimers: TimerListModel = UserDefaultManager.getValue(with: .timerInfo) ?? TimerListModel(records: [])
     
     var availablePeriods: [Int] = [60, 70]
-    var selectedPeriodIndex: Int?
+    var selectedPeriodIndex: Int? {
+        didSet {
+            if let index = self.selectedPeriodIndex {
+                self.timesTextField.text = self.availablePeriods[index].koreanUnitFromMinutes()
+            }
+        }
+    }
         
     weak var delegate: AddTimerProtocol?
     
@@ -105,13 +111,15 @@ extension AddTimerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if self.selectedPeriodIndex == nil {
+            self.selectedPeriodIndex = 0
+        }
         return self.availablePeriods[row].koreanUnitFromMinutes()
     }
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.selectedPeriodIndex = row
-        timesTextField.text = self.availablePeriods[row].koreanUnitFromMinutes()
     }
     
 }
