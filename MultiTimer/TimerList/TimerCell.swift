@@ -14,7 +14,6 @@ class TimerCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
-    @IBOutlet weak var finishTimeLabel: UILabel!
     
     var timer = Timer()
     var currentTime: Int = 0 {
@@ -65,7 +64,6 @@ class TimerCell: UITableViewCell {
         self.backgroundColor = .white
         
         self.startTimeLabel.text = ""
-        self.finishTimeLabel.text = ""
         
         self.startPauseButton.onClick = {
             self.changeState()

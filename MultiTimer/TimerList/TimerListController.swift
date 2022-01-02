@@ -11,11 +11,7 @@ class TimerListController: UIViewController {
 
     @IBOutlet weak var timerList: UITableView!
     
-    var model: TimerListModel? = nil {
-        didSet {
-            self.timerList.reloadData()
-        }
-    }
+    var model: TimerListModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +53,21 @@ extension TimerListController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            self.model?.records.remove(at: indexPath.row)
+            UserDefaultManager.setValue(with: self.model, key: .timerInfo)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
 
 
 extension TimerListController: AddTimerProtocol {
     func addTimer(didFinishWith data: TimerListModel) {
         self.model = data
+        self.timerList.reloadData()
     }
 }
