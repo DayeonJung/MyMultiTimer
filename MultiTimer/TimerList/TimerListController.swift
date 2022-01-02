@@ -9,7 +9,7 @@ import UIKit
 
 class TimerListController: UIViewController {
 
-    @IBOutlet weak var timerList: UICollectionView!
+    @IBOutlet weak var timerList: UITableView!
     
     var model: TimerListModel? = nil {
         didSet {
@@ -19,7 +19,6 @@ class TimerListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
                 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
@@ -29,7 +28,7 @@ class TimerListController: UIViewController {
         
         self.model = UserDefaultManager.getValue(with: .timerInfo)
 
-        self.timerList.setCell(cellName: TimerPlayerCell.self)
+        self.timerList.setCell(cellName: TimerCell.self)
         self.timerList.delegate = self
         self.timerList.dataSource = self
 
@@ -45,28 +44,21 @@ class TimerListController: UIViewController {
     
 }
 
-extension TimerListController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension TimerListController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.model?.records.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.loadCell(identifier: TimerPlayerCell.self, indexPath: indexPath)
-        cell.addShadowWithRoundedCorners()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.loadCell(identifier: TimerCell.self, indexPath: indexPath)
         if let record = self.model?.records[indexPath.item] {
             cell.setUI(with: record)
         }
-
+        
         return cell
     }
-    
-    
-}
 
-extension TimerListController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width - 40, height: 123)
-    }
+    
 }
 
 

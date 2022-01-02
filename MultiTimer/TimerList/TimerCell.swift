@@ -1,13 +1,13 @@
 //
-//  TimerPlayerCell.swift
+//  TimerCell.swift
 //  MultiTimer
 //
-//  Created by Dayeon Jung on 2022/01/01.
+//  Created by Dayeon Jung on 2022/01/02.
 //
 
 import UIKit
 
-class TimerPlayerCell: UICollectionViewCell {
+class TimerCell: UITableViewCell {
 
     @IBOutlet weak var startPauseButton: TitleButton!
     @IBOutlet weak var resetButton: TitleButton!
@@ -58,11 +58,10 @@ class TimerPlayerCell: UICollectionViewCell {
         }
     }
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 8
-        self.clipsToBounds = true
         self.backgroundColor = .white
         
         self.startTimeLabel.text = ""
@@ -78,6 +77,12 @@ class TimerPlayerCell: UICollectionViewCell {
         }
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
     private func changeState() {
         
         if self.currentState == .play {
@@ -135,4 +140,5 @@ class TimerPlayerCell: UICollectionViewCell {
     }
     
 
+    
 }
