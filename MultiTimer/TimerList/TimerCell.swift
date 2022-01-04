@@ -61,8 +61,6 @@ class TimerCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = .white
-        
         self.startTimeLabel.text = ""
         
         self.startPauseButton.onClick = {
